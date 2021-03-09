@@ -1,6 +1,7 @@
 package main.controller;
 
 import main.api.response.InitResponse;
+import main.api.response.SettingsResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +14,11 @@ public class ApiGeneralController {
 
     public ApiGeneralController(InitResponse initResponse) {
         this.initResponse = initResponse;
+    }
+
+    @GetMapping("/api/settings")
+    private SettingsResponse settings(){
+        return new SettingsResponse();
     }
 
     @GetMapping("/api/init")
