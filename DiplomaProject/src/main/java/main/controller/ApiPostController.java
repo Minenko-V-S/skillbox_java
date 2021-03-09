@@ -1,9 +1,10 @@
 package main.controller;
 
-import org.springframework.stereotype.Controller;
+
+import org.springframework.web.bind.annotation.RestController;
 
 //ToDo
 // обрабатывает все запросы /api/post/*
-@Controller
+@RestController
 public class ApiPostController {
 }

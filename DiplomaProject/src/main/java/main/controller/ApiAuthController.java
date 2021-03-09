@@ -1,9 +1,10 @@
 package main.controller;
 
-import org.springframework.stereotype.Controller;
+
+import org.springframework.web.bind.annotation.RestController;
 
 //todo
 // обрабатывает все запросы /api/auth/*
-@Controller
+@RestController
 public class ApiAuthController {
 }

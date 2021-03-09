@@ -55,11 +55,11 @@ public class PostComments extends AbstractEntity  {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String text;
 
-//    @Transient
 //    @JsonProperty("time")
 //    private String timeAgoTime;
+//
+//    public String getTimeAgoTime() {
+//        return TimeAgo.toDuration(getTime());
+//    }
 
-    public String getTimeAgoTime() {
-        return TimeAgo.toDuration(getTime());
-    }
 }
