@@ -1,5 +1,6 @@
 package main.model;
 
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
@@ -11,7 +12,6 @@ import main.utils.TimeAgo;
 
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
@@ -30,36 +30,37 @@ public class PostComments extends AbstractEntity  {
     @JoinColumn(name="parent_id", referencedColumnName = "id")
     private PostComments parentComment;
 
-    @NotNull
-    @OneToMany(mappedBy = "parentComment", fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(mappedBy = "parentComment", orphanRemoval = true)
     private final Set<PostComments> childComments = new HashSet<>();
 
-    /** Автор комментария */
-    @NotNull
+    // Автор комментария
     @ManyToOne(cascade = CascadeType.MERGE, optional = false)
     @JoinColumn(name="user_id", referencedColumnName = "id", nullable = false, updatable = false)
     private Users user;
 
-    /** Пост, к которому написан комментарий */
-    @NotNull
+    // Пост, к которому написан комментарий
     @ManyToOne(cascade = CascadeType.MERGE, optional = false)
     @JoinColumn(name="post_id", referencedColumnName = "id", nullable = false, updatable = false)
     private Posts post;
 
-    /** Дата и время комментария */
-    @NotNull
+    // Дата и время комментария
     @Column(nullable = false)
     private Instant time = Instant.now();
 
-    /** Текст комментария */
+    // Текст комментария
     @Column(columnDefinition = "TEXT", nullable = false)
     private String text;
 
-//    @JsonProperty("time")
-//    private String timeAgoTime;
-//
-//    public String getTimeAgoTime() {
-//        return TimeAgo.toDuration(getTime());
-//    }
+    @Transient
+    @JsonProperty("time")
+    @JsonView(JsonViews.EntityIdName.class)
+    private String timeAgoTime;
 
+    public String getTimeAgoTime() {
+        return TimeAgo.toDuration(getTime());
+    }
+
+    public Instant getTime() {
+        return time;
+    }
 }

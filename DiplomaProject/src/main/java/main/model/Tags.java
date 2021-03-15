@@ -4,14 +4,9 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,11 +16,11 @@ import java.util.Set;
 @NoArgsConstructor(force = true) @EqualsAndHashCode(callSuper = true, of = {"name"})
 @ToString(callSuper = true, of = {"name"})
 public class Tags extends AbstractEntity {
-    /** Имя тега */
+    // Имя тега
     @Column(nullable = false)
     private String name;
 
-    /** Посты, отмеченные конкретным тегом */
+    // Посты, отмеченные конкретным тегом
     @NotNull
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.PERSIST, CascadeType.MERGE},
@@ -35,5 +30,13 @@ public class Tags extends AbstractEntity {
 
     public Tags(String name) {
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Set<Posts> getPosts() {
+        return posts;
     }
 }

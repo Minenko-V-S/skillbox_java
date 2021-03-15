@@ -2,7 +2,7 @@ package main.enums;
 
 import main.config.Config;
 
-public class SettingsGlobal {
+public class Settings {
     public enum Code {
         MULTIUSER_MODE(Config.STRING_MULTIUSER_MODE),
         POST_PREMODERATION(Config.STRING_POST_PREMODERATION),

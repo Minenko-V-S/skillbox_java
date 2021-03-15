@@ -26,23 +26,21 @@ public class PostVotes extends AbstractEntity {
         this.time = time;
     }
 
-    /** Тот, кто поставил лайк / дизлайк */
-    @NotNull
+    // Тот, кто поставил лайк / дизлайк
     @ManyToOne(cascade = CascadeType.MERGE, optional = false)
     @JoinColumn(name="user_id", referencedColumnName = "id", nullable = false)
     private Users user;
 
-    /** Пост, которому поставлен лайк / дизлайк */
-    @NotNull
+    // Пост, которому поставлен лайк / дизлайк
     @ManyToOne(cascade = CascadeType.MERGE, optional = false)
     @JoinColumn(name="post_id", referencedColumnName = "id", nullable = false)
     private Posts post;
 
-    /** Дата и время лайка / дизлайка */
-    @NotNull @Column(nullable = false)
+    //Дата и время лайка / дизлайка
+    @Column(nullable = false)
     private Instant time = Instant.now();
 
-    /** Лайк или дизлайк: 1 или -1 */
+    //Лайк или дизлайк: 1 или -1
     @Column(nullable = false)
     private byte value;
 

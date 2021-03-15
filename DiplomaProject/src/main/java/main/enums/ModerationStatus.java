@@ -4,6 +4,7 @@ import org.springframework.core.convert.converter.Converter;
 
 public enum ModerationStatus {
     NEW, ACCEPTED, DECLINED;
+
     private static final ModerationStatus[] values = ModerationStatus.values();
 
     public static ModerationStatus getById(int id) {
