@@ -17,6 +17,7 @@ import java.util.List;
 
 public interface PostsRepository  extends JpaRepository<Posts, Integer> {
 
+
     /**
      * Должны выводиться только активные (поле “is_active” в таблице “posts” равно 1,
      * утверждённые модератором (поле “moderation_status” равно “ACCEPTED”) посты с
@@ -106,4 +107,5 @@ public interface PostsRepository  extends JpaRepository<Posts, Integer> {
                               @Param("is_active") boolean isActive,
                               @Param("status") ModerationStatus status,
                               Pageable pageable);
+
 }

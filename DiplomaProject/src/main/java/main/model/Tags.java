@@ -13,18 +13,23 @@ import java.util.Set;
 @Entity
 @Table(name = "tags")
 @Data
-@NoArgsConstructor(force = true) @EqualsAndHashCode(callSuper = true, of = {"name"})
+@EqualsAndHashCode(callSuper = true, of = {"name"})
 @ToString(callSuper = true, of = {"name"})
 public class Tags extends AbstractEntity {
     // Имя тега
     @Column(nullable = false)
     private String name;
 
+    public Tags() {
+    }
+
     // Посты, отмеченные конкретным тегом
     @NotNull
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.PERSIST, CascadeType.MERGE},
             mappedBy = "tags")
+
+
 
     private final Set<Posts> posts = new HashSet<>();
 
@@ -38,5 +43,9 @@ public class Tags extends AbstractEntity {
 
     public Set<Posts> getPosts() {
         return posts;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -1,4 +1,4 @@
---INSERT  INTO test.post_votes (id, time, value, post_id, user_id) VALUES
+--INSERT INTO test.post_votes (id, time, value, post_id, user_id) VALUES
 --	(1, '2020-01-26 19:35:52.000000', 1, 5, 8),
 --	(2, '2020-01-26 19:35:52.000000', 1, 5, 5),
 --	(3, '2020-01-26 19:35:52.000000', 1, 5, 3),

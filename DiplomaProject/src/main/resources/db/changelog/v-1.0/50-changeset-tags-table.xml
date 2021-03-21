@@ -21,6 +21,28 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+        <sql>INSERT ignore INTO test.tags (name) VALUES
+            ('HTML'),
+            ('Java'),
+            ('Linux'),
+            ('MacOS'),
+            ('Python'),
+            ('Spring'),
+            ('Windows'),
+            ('важно'),
+            ('горячее'),
+            ('игры'),
+            ('идея'),
+            ('космос'),
+            ('медицина'),
+            ('москва'),
+            ('новинка'),
+            ('новость'),
+            ('нуар'),
+            ('программирование'),
+            ('селедка'),
+            ('статистика'),
+            ('технологии');</sql>
         <rollback>
             <sqlFile dbms="mysql"
                      encoding="UTF-8"

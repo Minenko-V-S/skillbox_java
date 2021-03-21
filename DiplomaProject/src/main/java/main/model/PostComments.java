@@ -63,4 +63,48 @@ public class PostComments extends AbstractEntity  {
     public Instant getTime() {
         return time;
     }
+
+    public PostComments getParentComment() {
+        return parentComment;
+    }
+
+    public void setParentComment(PostComments parentComment) {
+        this.parentComment = parentComment;
+    }
+
+    public Set<PostComments> getChildComments() {
+        return childComments;
+    }
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
+    }
+
+    public Posts getPost() {
+        return post;
+    }
+
+    public void setPost(Posts post) {
+        this.post = post;
+    }
+
+    public void setTime(Instant time) {
+        this.time = time;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void setTimeAgoTime(String timeAgoTime) {
+        this.timeAgoTime = timeAgoTime;
+    }
 }

@@ -129,4 +129,36 @@ public class Posts extends AbstractEntity {
     public Set<PostComments> getComments() {
         return comments;
     }
+
+    public ModerationStatus getModerationStatus() {
+        return moderationStatus;
+    }
+
+    public void setModerationStatus(ModerationStatus moderationStatus) {
+        this.moderationStatus = moderationStatus;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    public Users getModeratedBy() {
+        return moderatedBy;
+    }
+
+    public void setModeratedBy(Users moderatedBy) {
+        this.moderatedBy = moderatedBy;
+    }
+
+    public Set<Tags> getTags() {
+        return tags;
+    }
+
+    public Set<PostVotes> getVotes() {
+        return votes;
+    }
 }

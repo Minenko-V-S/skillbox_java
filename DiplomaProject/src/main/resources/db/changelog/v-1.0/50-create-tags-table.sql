@@ -1,4 +1,4 @@
---INSERT INTO test.tags (name) VALUES
+--INSERT ignore INTO test.tags (name) VALUES
 --	('HTML'),
 --	('Java'),
 --	('Linux'),

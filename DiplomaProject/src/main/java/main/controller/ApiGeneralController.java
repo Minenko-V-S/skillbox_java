@@ -2,7 +2,6 @@ package main.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import main.api.response.InitResponse;
-import main.api.response.SettingsResponse;
 import main.services.SettingsService;
 import main.utils.JsonViews;
 import org.springframework.beans.factory.annotation.Autowired;

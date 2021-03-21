@@ -1,16 +1,16 @@
 package main.services;
 
-
-
 import main.enums.Settings;
-import main.model.GlobalSettings;
 import main.model.dto.SettingsDTO;
 import main.repositories.GlobalSettingsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+
+
 @Service
-public class SettingsService {
+public class SettingsService extends Settings {
     @Autowired
     private GlobalSettingsRepository globalSettingsRepository;
 
@@ -29,31 +29,8 @@ public class SettingsService {
 
         return settings;
     }
-
-    public SettingsDTO saveSettings(SettingsDTO settings) {
-        saveOneSetting(Settings.Code.MULTIUSER_MODE, settings.isMultiuserMode());
-        saveOneSetting(Settings.Code.POST_PREMODERATION, settings.isPostPremoderation());
-        saveOneSetting(Settings.Code.STATISTICS_IS_PUBLIC, settings.isStatisticsIsPublic());
-
-        return getSettings();
-    }
-
-    private GlobalSettings saveOneSetting(Settings.Code code, boolean valueToUpdate) {
-        Settings.Value value = valueToUpdate ? Settings.Value.YES : Settings.Value.NO;
-        final var option = globalSettingsRepository.findByCodeIs(code);
-
-        if (!value.equals(option.getValue())) {
-            option.setValue(value);
-            globalSettingsRepository.save(option);
-        }
-
-        return option;
-    }
-
-    public boolean isStatsPublic() {
-        return globalSettingsRepository.findByCodeIs(
-                Settings.Code.STATISTICS_IS_PUBLIC
-        ).getValue().getValue();
-    }
 }
+
+
+
 

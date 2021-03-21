@@ -1,6 +1,7 @@
 package main.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import lombok.Builder;
 import main.model.PostComments;
 import main.model.Posts;
 import main.utils.JsonViews;
@@ -12,6 +13,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
+@Builder
 public class PostDTO implements Comparable<PostDTO> {
 
     @JsonView({JsonViews.IdName.class, JsonViews.EntityId.class})

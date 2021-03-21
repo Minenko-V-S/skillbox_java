@@ -1,5 +1,6 @@
 package main.controller;
 
+import main.enums.PostMode;
 import main.repositories.PostsRepository;
 import main.services.PostsService;
 import main.services.UserAuthService;
