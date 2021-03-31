@@ -1,9 +1,7 @@
 package main.model.dto;
 
-import com.fasterxml.jackson.annotation.JsonView;
 import main.config.Config;
 import main.model.Users;
-import main.utils.JsonViews;
 import org.jsoup.Jsoup;
 
 
@@ -13,19 +11,10 @@ import java.time.format.DateTimeFormatter;
 
 public class ModeratedPostDTO {
 
-    @JsonView(JsonViews.IdName.class)
     private int id;
-
-    @JsonView(JsonViews.IdName.class)
     private String time;
-
-    @JsonView(JsonViews.IdName.class)
     private Users user;
-
-    @JsonView(JsonViews.IdName.class)
     private String title;
-
-    @JsonView(JsonViews.IdName.class)
     private String announce;
 
     public ModeratedPostDTO(int id, Instant time, Users author, String title, String text) {

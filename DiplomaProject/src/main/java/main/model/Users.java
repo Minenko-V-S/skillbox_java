@@ -27,7 +27,7 @@ public class Users extends AbstractEntity {
     private boolean isModerator;
 
     // Дата и время регистрации пользователя
-    @NotNull @Column(name = "reg_time", nullable = false)
+    @Column(name = "reg_time", nullable = false)
     private Instant regTime;
 
     // Имя пользователя

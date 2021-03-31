@@ -1,5 +1,6 @@
 package main.repositories;
 
+
 import main.enums.ModerationStatus;
 import main.model.Posts;
 import main.model.Tags;
@@ -8,16 +9,19 @@ import main.model.dto.ModeratedPostDTO;
 import main.model.dto.PostDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
 
 import java.time.Instant;
 import java.util.List;
 
-public interface PostsRepository  extends JpaRepository<Posts, Integer> {
 
-
+@Repository
+public interface PostsRepository extends JpaRepository<Posts, Integer> {
     /**
      * Должны выводиться только активные (поле “is_active” в таблице “posts” равно 1,
      * утверждённые модератором (поле “moderation_status” равно “ACCEPTED”) посты с
@@ -72,12 +76,12 @@ public interface PostsRepository  extends JpaRepository<Posts, Integer> {
             @Param("query") String query,
             Pageable pageable);
 
-
-
     /**
      * Counts total number of posts to be moderated by any moderator
      * `isActive = 1` AND `moderationStatus = NEW` AND `moderatedBy = NULL`
-    */
+     *
+     * @return int Returns total amount of posts to be moderated
+     */
     @Query("SELECT COUNT (*) FROM Posts p " +
             "WHERE p.isActive = 1 AND p.moderationStatus = 'NEW' AND p.moderatedBy IS NULL")
     int countPostAwaitingModeration();
@@ -92,7 +96,7 @@ public interface PostsRepository  extends JpaRepository<Posts, Integer> {
     int countByAuthor(@Param("user") Users user);
 
     @Query("SELECT " +
-            "  new  main.model.dto.ModeratedPostDTO(" +
+            "    new main.model.dto.ModeratedPostDTO(" +
             "       p.id, p.time, p.author, p.title, p.text" +
             "    ) " +
             "FROM Posts p " +
@@ -107,5 +111,4 @@ public interface PostsRepository  extends JpaRepository<Posts, Integer> {
                               @Param("is_active") boolean isActive,
                               @Param("status") ModerationStatus status,
                               Pageable pageable);
-
 }

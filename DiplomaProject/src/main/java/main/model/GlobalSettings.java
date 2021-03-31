@@ -1,22 +1,18 @@
 package main.model;
 
 
-import com.sun.istack.NotNull;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import main.enums.Settings;
-import org.hibernate.annotations.NaturalId;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "global_settings")
 @Data
-@NoArgsConstructor(force = true) @EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 public class GlobalSettings extends AbstractEntity {
     //Системное имя настройки
-    @NaturalId
-    @NotNull
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Settings.Code code;
@@ -26,10 +22,18 @@ public class GlobalSettings extends AbstractEntity {
     private String name;
 
     //Значение настройки
-    @NotNull
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Settings.Value value;
+
+    public GlobalSettings() {
+    }
+
+    public GlobalSettings(Settings.Code code, String name, Settings.Value value) {
+        this.code = code;
+        this.name = name;
+        this.value = value;
+    }
 
     public Settings.Code getCode() {
         return code;

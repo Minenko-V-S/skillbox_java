@@ -19,7 +19,7 @@ public class ApiAuthController {
     private UserAuthService userAuthService;
 
 
-    @GetMapping(value="/check")
+    @GetMapping("/check")
     public ResponseEntity<?> checkUserIsAuthorized() {
         return userAuthService.checkUserIsAuthorized();
     }

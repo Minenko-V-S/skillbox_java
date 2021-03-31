@@ -2,7 +2,6 @@ package main.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 import main.enums.ModerationStatus;
 
@@ -14,9 +13,9 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "posts")
+@Table(name = "posts", schema="test")
 @Data
-@NoArgsConstructor(force = true) @EqualsAndHashCode(callSuper = true, of = {"title", "time"})
+@EqualsAndHashCode(callSuper = true, of = {"title", "time"})
 @ToString(callSuper = true, of = {"title"})
 public class Posts extends AbstractEntity {
 
@@ -26,7 +25,7 @@ public class Posts extends AbstractEntity {
 
     // Статус модерации, по умолчанию значение “NEW”
     @Enumerated(EnumType.STRING)
-    @NotNull @Column(name = "moderation_status", nullable = false)
+    @Column(name = "moderation_status", nullable = false)
     private ModerationStatus moderationStatus = ModerationStatus.NEW;
 
     // ID пользователя-модератора, принявшего решение, или NULL
@@ -54,6 +53,20 @@ public class Posts extends AbstractEntity {
     // Количество просмотров поста
     @Column(name = "view_count", nullable = false)
     private int viewCount;
+
+    public Posts() {
+    }
+
+    public Posts(boolean isActive, ModerationStatus moderationStatus, Users moderatedBy, Users author, @NotNull Instant time, String title, String text, int viewCount) {
+        this.isActive = isActive;
+        this.moderationStatus = moderationStatus;
+        this.moderatedBy = moderatedBy;
+        this.author = author;
+        this.time = time;
+        this.title = title;
+        this.text = text;
+        this.viewCount = viewCount;
+    }
 
     /**
      * Теги, которыми отмечен данный пост

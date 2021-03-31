@@ -1,10 +1,8 @@
 package main.model.dto;
 
-import com.fasterxml.jackson.annotation.JsonView;
-import lombok.Builder;
+
 import main.model.PostComments;
 import main.model.Posts;
-import main.utils.JsonViews;
 import main.utils.TimeAgo;
 import org.jsoup.Jsoup;
 
@@ -13,49 +11,41 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-@Builder
+
 public class PostDTO implements Comparable<PostDTO> {
 
-    @JsonView({JsonViews.IdName.class, JsonViews.EntityId.class})
     private int id;
-
-    @JsonView({JsonViews.IdName.class, JsonViews.EntityIdName.class})
     private String title;
-
-    @JsonView(JsonViews.IdName.class)
     private String announce;
-
-    @JsonView(JsonViews.EntityIdName.class)
     private String text;
-
-    @JsonView({JsonViews.IdName.class, JsonViews.EntityIdName.class})
     private String time;
-
-    @JsonView({JsonViews.IdName.class, JsonViews.EntityIdName.class})
     private PostAuthorDTO user;
-
-    @JsonView({JsonViews.IdName.class, JsonViews.EntityIdName.class})
     private int viewCount;
-
-    @JsonView({JsonViews.IdName.class, JsonViews.EntityIdName.class})
     private int commentCount;
-
-    @JsonView({JsonViews.IdName.class, JsonViews.EntityIdName.class})
     private long likeCount;
-
-    @JsonView({JsonViews.IdName.class, JsonViews.EntityIdName.class})
     private long dislikeCount;
-
-    @JsonView(JsonViews.EntityIdName.class)
     private List<String> tags;
-
-    @JsonView(JsonViews.EntityIdName.class)
     private List<PostComments> comments;
-
     private Instant date;
 
     public PostDTO(Posts post) {
         this(post, 0, 0);
+    }
+
+    public PostDTO(int id, String title, String announce, String text, String time, PostAuthorDTO user, int viewCount, int commentCount, long likeCount, long dislikeCount, List<String> tags, List<PostComments> comments, Instant date) {
+        this.id = id;
+        this.title = title;
+        this.announce = announce;
+        this.text = text;
+        this.time = time;
+        this.user = user;
+        this.viewCount = viewCount;
+        this.commentCount = commentCount;
+        this.likeCount = likeCount;
+        this.dislikeCount = dislikeCount;
+        this.tags = tags;
+        this.comments = comments;
+        this.date = date;
     }
 
     public PostDTO(Posts post, long likeCount, long dislikeCount) {
@@ -66,11 +56,9 @@ public class PostDTO implements Comparable<PostDTO> {
         this.time = TimeAgo.toDuration(post.getTime());
         this.user = new PostAuthorDTO(post.getAuthor().getId(), post.getAuthor().getName());
         this.viewCount = post.getViewCount();
-
         this.commentCount = post.getComments().size();
         this.likeCount = likeCount;
         this.dislikeCount = dislikeCount;
-
         this.date = post.getTime();
         this.comments = new ArrayList<>();
     }
@@ -144,5 +132,45 @@ public class PostDTO implements Comparable<PostDTO> {
 
     public void setDate(Instant date) {
         this.date = date;
+    }
+
+    public PostAuthorDTO getUser() {
+        return user;
+    }
+
+    public void setUser(PostAuthorDTO user) {
+        this.user = user;
+    }
+
+    public int getViewCount() {
+        return viewCount;
+    }
+
+    public void setViewCount(int viewCount) {
+        this.viewCount = viewCount;
+    }
+
+    public long getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(long likeCount) {
+        this.likeCount = likeCount;
+    }
+
+    public long getDislikeCount() {
+        return dislikeCount;
+    }
+
+    public void setDislikeCount(long dislikeCount) {
+        this.dislikeCount = dislikeCount;
+    }
+
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
     }
 }

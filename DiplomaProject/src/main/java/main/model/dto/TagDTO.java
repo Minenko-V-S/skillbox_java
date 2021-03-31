@@ -1,18 +1,14 @@
 package main.model.dto;
 
-import com.fasterxml.jackson.annotation.JsonView;
-
 import lombok.ToString;
 import main.model.Tags;
-import main.utils.JsonViews;
+
 
 
 @ToString(of = {"name", "baseWeight", "weight", "totalPostsWithTag"})
 public class TagDTO {
-    @JsonView(JsonViews.IdName.class)
-    private final String name;
 
-    @JsonView(JsonViews.IdName.class)
+    private final String name;
     private double weight;
     private double baseWeight;
     private Tags tag;

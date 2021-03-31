@@ -15,7 +15,6 @@ public class ApiTagController {
     TagsService tagsService;
 
     @GetMapping("/api/tag")
-    @JsonView(JsonViews.IdName.class)
     public ResponseEntity<?> getTags(
             @RequestParam(name="query", required = false) String query) {
         return tagsService.getWeightedTags(query);

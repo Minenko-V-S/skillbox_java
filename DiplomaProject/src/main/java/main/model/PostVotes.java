@@ -12,13 +12,23 @@ import java.time.Instant;
 @Entity
 @Table(name = "post_votes")
 @Data
-@NoArgsConstructor(force = true) @EqualsAndHashCode(callSuper = true, of = {"time", "value"})
+ @EqualsAndHashCode(callSuper = true, of = {"time", "value"})
 @ToString(callSuper = true, of = {"value"})
 public class PostVotes extends AbstractEntity {
 
     public PostVotes(@NotNull Users user, @NotNull Posts post) {
         this.user = user;
         this.post = post;
+    }
+
+    public PostVotes() {
+    }
+
+    public PostVotes(Users user, Posts post, Instant time, byte value) {
+        this.user = user;
+        this.post = post;
+        this.time = time;
+        this.value = value;
     }
 
     public PostVotes(@NotNull Users user, @NotNull Posts post, @NotNull Instant time) {

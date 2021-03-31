@@ -17,15 +17,15 @@ import java.time.Instant;
 @NoArgsConstructor(force = true) @EqualsAndHashCode(callSuper = true)
 @ToString(of = {"code", "secretCode", "imageBase64"})
 public class CaptchaCodes extends AbstractEntity {
-    /** Дата и время генерации кода капчи */
+    // Дата и время генерации кода капчи
     @NotNull @Column(nullable = false)
     private Instant time;
 
-    /** Код, отображаемый на картинкке капчи */
+    // Код, отображаемый на картинкке капчи
     @Column(nullable = false)
     private String code;
 
-    /** Код, передаваемый в параметре */
+    // Код, передаваемый в параметре
     @Column(name = "secret_code", nullable = false)
     private String secretCode;
 

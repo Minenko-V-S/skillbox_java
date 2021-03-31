@@ -1,33 +1,20 @@
 package main.model.dto;
 
-import com.fasterxml.jackson.annotation.JsonView;
+
 import lombok.Data;
 import lombok.ToString;
-import main.utils.JsonViews;
+
 
 
 @Data  @ToString
 public class AuthorizedUserDTO {
 
-    @JsonView(JsonViews.IdName.class)
     private int id;
-
-    @JsonView(JsonViews.IdName.class)
     private String name;
-
-    @JsonView(JsonViews.IdName.class)
     private String photo;
-
-    @JsonView(JsonViews.IdName.class)
     private String email;
-
-    @JsonView(JsonViews.IdName.class)
     private boolean moderation;
-
-    @JsonView(JsonViews.IdName.class)
     private long moderationCount;
-
-    @JsonView(JsonViews.IdName.class)
     private boolean settings;
 
     public AuthorizedUserDTO(int id, String name, String photo, String email) {

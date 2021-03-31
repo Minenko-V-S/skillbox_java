@@ -39,8 +39,12 @@
     <connection id="4d524c10-4450-44e7-beb0-8f28da0c37b3" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="4d524c10-4450-44e7-beb0-8f28da0c37b3" dataset="test.post_comments" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="4d524c10-4450-44e7-beb0-8f28da0c37b3" dataset="test.tags" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="4d524c10-4450-44e7-beb0-8f28da0c37b3" dataset="test.captcha_codes" active-filter-id="" />
-    <filter-actions connection-id="4d524c10-4450-44e7-beb0-8f28da0c37b3" dataset="test.posts" active-filter-id="" />
+    <filter-actions connection-id="4d524c10-4450-44e7-beb0-8f28da0c37b3" dataset="test.global_settings" active-filter-id="" />
+    <filter-actions connection-id="4d524c10-4450-44e7-beb0-8f28da0c37b3" dataset="test.posts" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="4d524c10-4450-44e7-beb0-8f28da0c37b3" dataset="test.users" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />

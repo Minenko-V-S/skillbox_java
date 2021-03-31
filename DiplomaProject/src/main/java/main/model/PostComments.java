@@ -1,13 +1,12 @@
 package main.model;
 
 
+
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import main.utils.JsonViews;
 import main.utils.TimeAgo;
 
 
@@ -19,7 +18,7 @@ import java.util.Set;
 @Entity
 @Table(name = "post_comments")
 @Data
-@NoArgsConstructor(force = true) @EqualsAndHashCode(callSuper = true, of = {"text", "time"})
+@EqualsAndHashCode(callSuper = true, of = {"text", "time"})
 @ToString(callSuper = true, of = {"text", "user", "time"})
 public class PostComments extends AbstractEntity  {
     /**
@@ -51,9 +50,20 @@ public class PostComments extends AbstractEntity  {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String text;
 
+    public PostComments() {
+    }
+
+    public PostComments(PostComments parentComment, Users user, Posts post, Instant time, String text, String timeAgoTime) {
+        this.parentComment = parentComment;
+        this.user = user;
+        this.post = post;
+        this.time = time;
+        this.text = text;
+        this.timeAgoTime = timeAgoTime;
+    }
+
     @Transient
     @JsonProperty("time")
-    @JsonView(JsonViews.EntityIdName.class)
     private String timeAgoTime;
 
     public String getTimeAgoTime() {
