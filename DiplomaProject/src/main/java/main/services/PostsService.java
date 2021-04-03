@@ -27,23 +27,29 @@ import java.util.*;
 @Service
 public class PostsService {
 
-    @Autowired
+
     private PostsRepository postsRepository;
-    @Autowired
+
     private TagsRepository tagsRepository;
-    @Autowired
+
     private TagsService tagsService;
-    @Autowired
+
     private UserAuthService userAuthService;
-    @Autowired
+
     private PostVotesRepository postVotesRepository;
-    @Autowired
+
     private PostCommentsRepository postCommentsRepository;
 
-
-    public PostsService(UserAuthService userAuthService) {
+    public PostsService(PostsRepository postsRepository, TagsRepository tagsRepository, TagsService tagsService, UserAuthService userAuthService, PostVotesRepository postVotesRepository, PostCommentsRepository postCommentsRepository) {
+        this.postsRepository = postsRepository;
+        this.tagsRepository = tagsRepository;
+        this.tagsService = tagsService;
         this.userAuthService = userAuthService;
+        this.postVotesRepository = postVotesRepository;
+        this.postCommentsRepository = postCommentsRepository;
     }
+
+
 
 
 //     GET запрос /api/post.
@@ -80,7 +86,7 @@ public class PostsService {
 
 
 //
-//        Pageable pageable = PageRequest.of(offset / limit, limit);
+//        Pageable pageable = PageRequest.of(offset , limit, sort);
 //        Page<PostDTO> posts = postsRepository.findAllPosts(now, pageable);
 //        return ResponseEntity.ok(new PostListDTO(posts));
 

@@ -4,6 +4,7 @@ package main.repositories;
 import main.model.Posts;
 import main.model.Tags;
 import main.model.dto.TagDTO;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface TagsRepository extends CrudRepository<Tags, Integer> {
+public interface TagsRepository extends JpaRepository<Tags, Integer> {
     String SELECT_DTO = "SELECT DISTINCT new main.model.dto.TagDTO(t, COUNT(*) as cnt) ";
     String SELECT = "SELECT DISTINCT t ";
     String QUERY = "FROM Tags t " +

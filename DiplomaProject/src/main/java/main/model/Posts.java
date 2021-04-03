@@ -14,9 +14,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "posts", schema="test")
-@Data
-@EqualsAndHashCode(callSuper = true, of = {"title", "time"})
-@ToString(callSuper = true, of = {"title"})
 public class Posts extends AbstractEntity {
 
     // Скрыта или активна публикация: 0 или 1
@@ -30,16 +27,17 @@ public class Posts extends AbstractEntity {
 
     // ID пользователя-модератора, принявшего решение, или NULL
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "moderator_id", referencedColumnName="id")
+    @JoinColumn(name = "moderator_id", referencedColumnName = "id")
     private Users moderatedBy;
 
     // Автор поста
     @ManyToOne(cascade = CascadeType.MERGE, optional = false)
-    @JoinColumn(name = "user_id", referencedColumnName="id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private Users author;
 
     // Дата и время публикации поста
-    @NotNull @Column(nullable = false)
+    @NotNull
+    @Column(nullable = false)
     private Instant time;
 
     // Заголовок поста
@@ -70,17 +68,17 @@ public class Posts extends AbstractEntity {
 
     /**
      * Теги, которыми отмечен данный пост
-     *
+     * <p>
      * MERGE: If the parent entity is merged into the persistence context,
-     *        the related entity will also be merged.
-     *
+     * the related entity will also be merged.
+     * <p>
      * PERSIST: If the parent entity is persisted into the persistence context,
-     *          the related entity will also be persisted.
+     * the related entity will also be persisted.
      */
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinTable(name = "post_tags",
-            joinColumns = @JoinColumn(name = "post_id", referencedColumnName="id"),
-            inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName="id"))
+            joinColumns = @JoinColumn(name = "post_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "id"))
     private final Set<Tags> tags = new HashSet<>();
 
     // Лайки / дизлайки поста
@@ -174,4 +172,11 @@ public class Posts extends AbstractEntity {
     public Set<PostVotes> getVotes() {
         return votes;
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
+
+

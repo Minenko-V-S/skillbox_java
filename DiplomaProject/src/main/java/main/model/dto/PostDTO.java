@@ -1,6 +1,8 @@
 package main.model.dto;
 
 
+import lombok.Data;
+import lombok.Getter;
 import main.model.PostComments;
 import main.model.Posts;
 import main.utils.TimeAgo;
@@ -11,7 +13,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Data
 public class PostDTO implements Comparable<PostDTO> {
 
     private int id;
@@ -74,103 +76,103 @@ public class PostDTO implements Comparable<PostDTO> {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getAnnounce() {
         return announce;
     }
 
-    public void setAnnounce(String announce) {
-        this.announce = announce;
-    }
-
     public String getText() {
         return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
     }
 
     public String getTime() {
         return time;
     }
 
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public int getCommentCount() {
-        return commentCount;
-    }
-
-    public void setCommentCount(int commentCount) {
-        this.commentCount = commentCount;
-    }
-
-    public List<PostComments> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<PostComments> comments) {
-        this.comments = comments;
-    }
-
-    public Instant getDate() {
-        return date;
-    }
-
-    public void setDate(Instant date) {
-        this.date = date;
-    }
-
     public PostAuthorDTO getUser() {
         return user;
-    }
-
-    public void setUser(PostAuthorDTO user) {
-        this.user = user;
     }
 
     public int getViewCount() {
         return viewCount;
     }
 
-    public void setViewCount(int viewCount) {
-        this.viewCount = viewCount;
+    public int getCommentCount() {
+        return commentCount;
     }
 
     public long getLikeCount() {
         return likeCount;
     }
 
-    public void setLikeCount(long likeCount) {
-        this.likeCount = likeCount;
-    }
-
     public long getDislikeCount() {
         return dislikeCount;
-    }
-
-    public void setDislikeCount(long dislikeCount) {
-        this.dislikeCount = dislikeCount;
     }
 
     public List<String> getTags() {
         return tags;
     }
 
+    public List<PostComments> getComments() {
+        return comments;
+    }
+
+    public Instant getDate() {
+        return date;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAnnounce(String announce) {
+        this.announce = announce;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public void setUser(PostAuthorDTO user) {
+        this.user = user;
+    }
+
+    public void setViewCount(int viewCount) {
+        this.viewCount = viewCount;
+    }
+
+    public void setCommentCount(int commentCount) {
+        this.commentCount = commentCount;
+    }
+
+    public void setLikeCount(long likeCount) {
+        this.likeCount = likeCount;
+    }
+
+    public void setDislikeCount(long dislikeCount) {
+        this.dislikeCount = dislikeCount;
+    }
+
     public void setTags(List<String> tags) {
         this.tags = tags;
+    }
+
+    public void setComments(List<PostComments> comments) {
+        this.comments = comments;
+    }
+
+    public void setDate(Instant date) {
+        this.date = date;
     }
 }

@@ -3,8 +3,6 @@ package main.controller;
 
 import main.repositories.PostsRepository;
 import main.services.PostsService;
-import main.services.UserAuthService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,12 +12,15 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/post")
 public class ApiPostController {
 
-    @Autowired
-    private UserAuthService userAuthService;
-    @Autowired
+
+
     private PostsRepository postsRepository;
-    @Autowired
     private PostsService postsService;
+
+    public ApiPostController(PostsRepository postsRepository, PostsService postsService) {
+        this.postsRepository = postsRepository;
+        this.postsService = postsService;
+    }
 
     @GetMapping("")
     public ResponseEntity<?> getPosts(

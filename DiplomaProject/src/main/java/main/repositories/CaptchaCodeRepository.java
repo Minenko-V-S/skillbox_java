@@ -1,6 +1,7 @@
 package main.repositories;
 
 import main.model.CaptchaCodes;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -10,7 +11,7 @@ import java.time.Instant;
 
 @Repository
 @Transactional
-public interface CaptchaCodeRepository extends CrudRepository<CaptchaCodes, Long> {
+public interface CaptchaCodeRepository extends JpaRepository<CaptchaCodes, Long> {
     @Modifying
     void deleteByTimeBefore(Instant time);
 
